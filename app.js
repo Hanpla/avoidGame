@@ -2,6 +2,7 @@
 
 const wrap = document.getElementById('wrap');
 const player = document.querySelector('.player');
+const over = document.querySelector('.over');
 
 // 변수
 
@@ -16,6 +17,7 @@ let isGameover = false;
 init();
 
 // 키보드 조작
+
 control();
 
 // 함수
@@ -30,6 +32,8 @@ function create() {
     object.style.left = `${randomX}px`;
     object.className = 'object';
     wrap.appendChild(object);
+    wrap.appendChild(player);
+    wrap.appendChild(over);
     drop(object);
 }
 
@@ -48,6 +52,7 @@ function drop(object) {
             playerRect.left < objectRect.right &&
             playerRect.right > objectRect.left
         ) {
+            clearInterval(interval);
             showGameover();
         }
 
@@ -74,10 +79,11 @@ function updatePlayerPosition() {
 
 function showGameover() {
     const over = document.querySelector('.over');
-    over.style.display = 'block';
+    over.classList.remove('hidden');
     clearInterval(interval);
     isGameover = true;
     document.removeEventListener('keydown', control);
+    rty();
 }
 
 function control() {
@@ -85,7 +91,6 @@ function control() {
         if (isGameover) {
             return; // 게임이 종료된 경우 동작하지 않음
         }
-
         let key = event.keyCode || event.which;
         if (key === 37) {
             x -= moveSpeed;
@@ -94,4 +99,15 @@ function control() {
         }
         updatePlayerPosition(); // 플레이어 위치 업데이트
     });
+}
+
+function rty() {
+    const rty = document.querySelector('.rty');
+    rty.addEventListener('click', () => {
+        isGameover = false;
+        const over = document.querySelector('.over');
+        over.classList.add('hidden');
+        wrap.innerHTML = '';
+        init();
+    })
 }
