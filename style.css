@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#wrap {
+    position: relative;
+    border: 1px solid black;
+    width: 822px;
+    height: 800px;
+}
+
+.player {
+    position: absolute;
+    bottom: 0px;
+    left: 400px;
+    background: blue;
+    width: 20px;
+    height: 30px;
+}
+
+.object {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: red;
+    border-radius: 1rem;
+}
+
+.over {
+    text-align: center;
+    position: relative;
+    top: 40%;
+    font-size: 120px;
+    color: red;
+    display: none;
+}
