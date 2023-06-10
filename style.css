@@ -37,10 +37,25 @@ body {
 }
 
 .over {
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    justify-content: center;
     position: relative;
     top: 40%;
-    font-size: 120px;
+}
+
+.over>p {
     color: red;
+    font-size: 120px;
+}
+
+.over>button {
+    width: 100px;
+    height: 50px;
+    margin: auto;
+}
+
+.hidden {
     display: none;
 }
